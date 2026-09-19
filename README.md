@@ -4,7 +4,7 @@
 ## 10. Implementation of programs using pointer arithmetic.
 # Ex.No:21
   Implement a C program to demonstrate call by value and call by reference by swapping two integers using separate functions.
-# Date : 
+# Date : 19/9/2026
 # Aim:
  To implement a C program that illustrates the difference between call by value and call by reference by swapping two integer variables using two separate functions.
 # Algorithm:
@@ -39,7 +39,78 @@
 ### Step 12: 
   Stop
 # Program:
+#include <stdio.h>
+
+// Function prototype
+void validateDate();
+
+int main()
+{
+    // Step 3: Call the function to validate date
+    validateDate();
+    return 0;
+}
+
+// Function definition
+void validateDate()
+{
+    int dd, mm, yy;
+    int isValid = 0; // Flag to check validity
+
+    // Step 5 & 6: Input date
+    printf("Enter date (DD/MM/YYYY): ");
+    scanf("%d/%d/%d", &dd, &mm, &yy);
+
+    // Step 7: Validate year
+    if (yy < 1900 || yy > 9999)
+    {
+        printf("Year is not valid.\n");
+        return;
+    }
+
+    // Step 8: Validate month
+    if (mm < 1 || mm > 12)
+    {
+        printf("Month is not valid.\n");
+        return;
+    }
+
+    // Step 9,10,11: Validate day based on month and leap year
+    switch (mm)
+    {
+        case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+            if (dd >= 1 && dd <= 31)
+                isValid = 1;
+            break;
+        case 4: case 6: case 9: case 11:
+            if (dd >= 1 && dd <= 30)
+                isValid = 1;
+            break;
+        case 2:
+            // Leap year check
+            if ((yy % 4 == 0 && yy % 100 != 0) || (yy % 400 == 0))
+            {
+                if (dd >= 1 && dd <= 29)
+                    isValid = 1;
+            }
+            else
+            {
+                if (dd >= 1 && dd <= 28)
+                    isValid = 1;
+            }
+            break;
+    }
+
+    // Step 12 & 13: Display result
+    if (isValid)
+        printf("Date is valid.\n");
+    else
+        printf("Date is invalid.\n");
+}
+
 # Output:
+<img width="399" height="253" alt="image" src="https://github.com/user-attachments/assets/dd6e3d50-5b88-4979-9a79-bd0adb5c6df4" />
+
 # Result: 
   Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -48,7 +119,7 @@
 # IAPR-5- Module 5 - FoC
 # Ex.No:22
   Implement a C program to generate the Fibonacci series using a recursive function. The program should accept a positive integer n and display the first n terms of the Fibonacci sequence.
-# Date : 
+# Date : 19/9/2026
 # Aim:
   To implement a C program that uses a recursive function to generate and display the Fibonacci series for a given number of terms.
 # Algorithm:
@@ -119,7 +190,55 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 12:
   Stop
 # Program:
+#include <stdio.h>
+
+// Function prototypes
+int max(int a, int b);
+int min(int a, int b);
+
+int main()
+{
+    int num1, num2;
+    int maximum, minimum;
+
+    // Step 4 & 5: Input two numbers
+    printf("Enter two numbers: ");
+    scanf("%d %d", &num1, &num2);
+
+    // Step 6 & 8: Find maximum
+    maximum = max(num1, num2);
+
+    // Step 9 & 11: Find minimum
+    minimum = min(num1, num2);
+
+    // Step 12: Display results
+    printf("Maximum = %d\n", maximum);
+    printf("Minimum = %d\n", minimum);
+
+    return 0;
+}
+
+// Step 7: Function to find maximum
+int max(int a, int b)
+{
+    if (a > b)
+        return a;
+    else
+        return b;
+}
+
+// Step 10: Function to find minimum
+int min(int a, int b)
+{
+    if (a > b)
+        return b;
+    else
+        return a;
+}
+
 # Output:
+<img width="487" height="304" alt="image" src="https://github.com/user-attachments/assets/764973b3-0a27-42c5-9707-52b5f229c83f" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -128,7 +247,7 @@ Thus, the program was implemented and executed successfully, and the required ou
 # IAPR-5- Module 5 - FoC
 # Ex.No:24
    Implement a C program that dynamically allocates memory using calloc(), accepts integer inputs from the user, computes their sum, and prints the sum.
-# Date : 
+# Date : 19/9/2026
 # Aim:
   To implement a C program that dynamically allocates memory for an array of integers using calloc(), accepts elements from the user, computes their sum, and displays the sum.
 # Algorithm:
@@ -161,7 +280,50 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 11:
   Stop
 # Program:
+#include <stdio.h>
+
+// Step 3: Function prototypes
+float celtof();   // Celsius to Fahrenheit
+float ftocel();   // Fahrenheit to Celsius
+
+int main()
+{
+    float F, C;
+
+    // Step 5 & 7: Convert Celsius to Fahrenheit
+    F = celtof();
+    printf("Temperature in Fahrenheit: %.2f°F\n", F);
+
+    // Step 8 & 10: Convert Fahrenheit to Celsius
+    C = ftocel();
+    printf("Temperature in Celsius: %.2f°C\n", C);
+
+    return 0;
+}
+
+// Step 6: Function to convert Celsius to Fahrenheit
+float celtof()
+{
+    float C, F;
+    printf("Enter the temperature in Celsius: ");
+    scanf("%f", &C);
+    F = (C * 9 / 5) + 32;
+    return F;
+}
+
+// Step 9: Function to convert Fahrenheit to Celsius
+float ftocel()
+{
+    float f, celsius;
+    printf("Enter the temperature in Fahrenheit: ");
+    scanf("%f", &f);
+    celsius = (f - 32) * 5 / 9;
+    return celsius;
+}
+
 # Output:
+<img width="517" height="289" alt="image" src="https://github.com/user-attachments/assets/29324781-6354-45f6-9398-e132dc93e2bc" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -197,6 +359,57 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 10:
   Stop
 # Program:
+#include <stdio.h>
+#include <ctype.h>
+#include <string.h>
+
+// Step 3: Function definition
+void convertFirstCLastC(char str[])
+{
+    int len = strlen(str);
+
+    if (len == 0)
+        return;
+
+    // Convert first character to uppercase
+    str[0] = toupper(str[0]);
+
+    // Loop through the string to capitalize characters around spaces
+    for (int i = 1; i < len - 1; i++)
+    {
+        if (str[i] == ' ')
+        {
+            // Capitalize character before space
+            if (i - 1 >= 0)
+                str[i - 1] = toupper(str[i - 1]);
+            // Capitalize character after space
+            if (i + 1 < len)
+                str[i + 1] = toupper(str[i + 1]);
+        }
+    }
+
+    // Convert last character to uppercase
+    str[len - 1] = toupper(str[len - 1]);
+}
+
+int main()
+{
+    char str[100];
+
+    // Step 5: Read input string
+    printf("Enter a string: ");
+    scanf("%[^\n]", str);
+
+    // Call the function to modify the string
+    convertFirstCLastC(str);
+
+    // Print the modified string
+    printf("Modified string: %s\n", str);
+
+    return 0;
+}
 # Output:
+<img width="405" height="250" alt="image" src="https://github.com/user-attachments/assets/3174cc5a-268e-45f9-b8ce-702856af39e0" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
